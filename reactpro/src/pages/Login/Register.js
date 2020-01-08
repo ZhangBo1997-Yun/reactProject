@@ -27,8 +27,8 @@ class Register extends Component {
             console.log('then', res)
             // 将token 和 ids 存到缓存里
             setItem('token', res.token)
-            setItem('uid', res.uid)
-            setItem('rootIds', ['0', '1', '2-0', '2-1'])
+            setItem('uid', res._id)
+            setItem("exp")
             message.success('登录成功3s后跳转首页', 1, () => {
               this.props.history.replace('/admin')
             })
