@@ -1,8 +1,9 @@
 import React from 'react'
 import Loadable from 'react-loadable'
-import { Spin ,Alert} from 'antd';
+import { Spin, Alert } from 'antd'
 export default (loader) => {
   // console.log(path)
+  
   function Loading() {
     return (
       <Spin tip="Loading...">

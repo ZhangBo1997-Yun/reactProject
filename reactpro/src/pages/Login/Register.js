@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Form, Icon, Button, Input, Card, message } from 'antd'
 import { UserRegister } from '../../api/user'
 import { withRouter } from 'react-router-dom'
-import { setItem, getItem } from '../../utils/webStorage'
-import styles from './register.module.less'
+import { getItem } from '../../utils/webStorage'
+import styles from './login.module.less'
 
 class Register extends Component {
   componentDidMount() {
@@ -24,13 +24,8 @@ class Register extends Component {
         let { userName, passWord } = data
         UserRegister(userName, passWord)
           .then((res) => {
-            console.log('then', res)
-            // 将token 和 ids 存到缓存里
-            setItem('token', res.token)
-            setItem('uid', res._id)
-            setItem("exp")
-            message.success('登录成功3s后跳转首页', 1, () => {
-              this.props.history.replace('/admin')
+            message.success(res.msg, 1, () => {
+              this.props.history.replace('/login')
             })
           })
           .catch((err) => {
@@ -72,7 +67,7 @@ class Register extends Component {
             <Button type="primary" onClick={this.Register} className="register-form-button">
               注册
           </Button>
-            <a className={styles.right} onClick={this.jump}>立即登录!</a>
+            <span className={styles.right} onClick={this.jump}>立即登录!</span>
           </Form.Item>
         </div>
       </Card>

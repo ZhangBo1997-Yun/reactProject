@@ -5,6 +5,7 @@ import store from '../store/store'
 axios.interceptors.request.use(function (config) {
   // 请求拦截器传递token
   console.log('请求拦截器', config)
+  console.log('this', this)
   let token = getItem('token') || ''
   config.data.token = token
   return config;

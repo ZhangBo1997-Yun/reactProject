@@ -16,8 +16,8 @@ export const UserRegister = async (userName, passWord) => {
   return res
 }
 // 退出登录
-export const UserLogOut = async (uid) => {
-  let res = await axios.post('/jwy/v1/admin/user/logout', { uid })
+export const UserLogOut = async (_id, token) => {
+  let res = await axios.post('/jwy/v1/admin/user/logout', { _id, token })
   if (res.err !== 0) {
     throw res
   }

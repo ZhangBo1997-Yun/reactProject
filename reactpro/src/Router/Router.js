@@ -3,7 +3,7 @@ import { HashRouter, Route, Switch, Redirect, } from 'react-router-dom'
 import loadable from '../utils/loadable'  //路由懒加载
 const Login = loadable(() => import('../pages/Login/Login'))
 const Register = loadable(() => import('../pages/Login/Register'))
-const Admin = loadable(() => import('../pages/Admin/admin'))
+const Admin = loadable(() => import('../pages/Admin/Admin'))
 
 class Router extends Component {
     render() {

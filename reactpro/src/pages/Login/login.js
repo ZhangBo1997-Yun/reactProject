@@ -15,22 +15,21 @@ class Login extends Component{
     this.props.history.replace('/register')
   }
   login=()=>{ //这是个函数
-   let {getFieldsValue,validateFields} = this.props.form 
+   let {validateFields} = this.props.form 
   //  console.log(getFieldsValue())
     validateFields((err,data)=>{
       if(err){
         message.error('用户输入有误请重试')
       }else{
         //  发起网络请求登录
-        console.log()
         let {userName,passWord} = data
         UserLogin(userName,passWord)
         .then((res)=>{
           console.log('then',res)
           // 将token 和 ids 存到缓存里
           setItem('token',res.token)
-          setItem('uid',res.uid)
-          setItem('rootIds',['0','1','2-0','2-1'])
+          setItem('uid',res._id)
+          setItem('ctime',res.ctime)
           message.success('登录成功3s后跳转首页',1,()=>{
             this.props.history.replace('/admin')
           })
@@ -40,11 +39,10 @@ class Login extends Component{
         })
 
       }
-    console.log(err,data)
   })
  }
  render() {
-   console.log('login',this)
+   
    const { getFieldDecorator } = this.props.form;
   return (
     <Card className={styles.login}>
@@ -76,7 +74,7 @@ class Login extends Component{
           <Button type="primary" onClick={this.login} className="login-form-button">
             登录
           </Button>
-          <a className={styles.right} onClick={this.jump}>没有账号,立即注册!</a>
+          <span className={styles.right} onClick={this.jump}>没有账号,立即注册!</span>
         </Form.Item>
       </div>
     </Card>
