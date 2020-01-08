@@ -1,0 +1,9 @@
+.headerNav{
+    float: right;
+    background: skyblue;
+    display: flex;
+    align-items: center;
+}
+.userName{
+    margin: 0 16px;       
+}
