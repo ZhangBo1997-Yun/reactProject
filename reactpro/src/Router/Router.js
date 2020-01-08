@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { HashRouter, Link, Route, Switch, Redirect, } from 'react-router-dom'
-import Login from '../pages/Login/login'
-import Admin from '../pages/Admin/admin'
+import { HashRouter, Route, Switch, Redirect, } from 'react-router-dom'
+import loadable from '../utils/loadable'  //路由懒加载
+const Login = loadable(() => import('../pages/Login/Login'))
+const Register = loadable(() => import('../pages/Login/Register'))
+const Admin = loadable(() => import('../pages/Admin/admin'))
 
 class Router extends Component {
     render() {
@@ -13,6 +15,7 @@ class Router extends Component {
                 <Switch>
                     <Redirect exact from='/' to='login'></Redirect>
                     <Route path='/login' component={Login}></Route>
+                    <Route path='/register' component={Register}></Route>
                     <Route path='/admin' component={Admin}></Route>
                 </Switch>
             </HashRouter>

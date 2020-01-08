@@ -3,7 +3,7 @@ import { getItem } from './webStorage'
 import ActionCreator from '../store/actionCreatore'
 import store from '../store/store'
 axios.interceptors.request.use(function (config) {
-  // 请求拦截器传递token 
+  // 请求拦截器传递token
   console.log('请求拦截器', config)
   let token = getItem('token') || ''
   config.data.token = token

@@ -1,13 +1,17 @@
 import React from 'react'
 import Loadable from 'react-loadable'
-
-export default (loader)=>{
+import { Spin ,Alert} from 'antd';
+export default (loader) => {
   // console.log(path)
-  function Loading(){
-    return(
-      <h1>
-        这里是过度组件
-      </h1>
+  function Loading() {
+    return (
+      <Spin tip="Loading...">
+        <Alert
+          message="加载中"
+          description="正在加载，大人稍等"
+          type="info"
+        />
+      </Spin>
     )
   }
   const LoadableComponent = Loadable({
@@ -15,12 +19,12 @@ export default (loader)=>{
     loading: Loading,
   });
 
-  return (props)=>{
-    return(
+  return (props) => {
+    return (
       <LoadableComponent>
         {props.children}
       </LoadableComponent>
     )
   }
-  
+
 }
