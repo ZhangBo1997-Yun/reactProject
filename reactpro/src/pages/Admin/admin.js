@@ -55,6 +55,7 @@ class Admin extends React.Component {
             }}
           >
             {this.props.children}
+            
           </Content>
         </Layout>
       </Layout>

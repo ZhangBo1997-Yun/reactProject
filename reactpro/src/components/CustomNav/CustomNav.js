@@ -10,7 +10,8 @@ let arr = [
     icon: 'mail',
     path: '/admin/home',
     id: '0'
-  }, {
+  },
+  {
     name: '学生管理',
     icon: 'user',
     id: '2',
